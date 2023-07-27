@@ -109,7 +109,7 @@ const Homepage = () => {
     }, []);
     return (
         <div>
-        
+
             <div className="">
                 <div className="bg-[url('https://img.yts.mx/assets/images/movies/to_end_all_war_oppenheimer_the_atomic_bomb_2023/background.jpg')] h-auto bg-cover  pb-20">
                     <div className=" backdrop-blur-md h-auto w-full md:px-20 lg:px-80 text-white">
