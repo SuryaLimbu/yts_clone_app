@@ -1,7 +1,44 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { FiCoffee, FiFilm, FiHeart, FiMessageSquare, FiStar } from "react-icons/fi";
 import ReactReadMoreReadLess from "react-read-more-read-less";
+import { Link, useParams } from "react-router-dom";
 const InfoPage = () => {
+    const [data, setData] = useState([]);
+    const [movieSuggestions, setMovieSuggestions] = useState([]);
+    // const [movieComments, setMovieComments] = useState([]);
+    const { id } = useParams();
+    const movie_id = parseInt(id);
+    const url = `https://yts.mx/api/v2/movie_details.json?movie_id=${movie_id}&with_images=true&with_cast=true`;
+
+    // console.log(url);
+    // console.log(movie_id);
+    useEffect(() => {
+        axios.get(url)
+            .then(response => {
+                setData(response.data.data.movie)
+                // console.log(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching api: ', error);
+            });
+    }, []);
+    // console.log(data);
+
+    useEffect(() => {
+        axios.get(`https://yts.mx/api/v2/movie_suggestions.json?movie_id=${movie_id}`)
+            .then(response => {
+                setMovieSuggestions(response.data.data.movies)
+            })
+    })
+    // console.log(movieSuggestions);
+    // useEffect(() => {
+    //     axios.get(`https://yts.mx/api/v2/movie_comments.json?movie_id=${movie_id}`)
+    //         .then(response => {
+    //             setMovieComments(response.data.data)
+    //             console.log(response.data);
+    //         })
+    // })
 
     return (
         <>
@@ -10,16 +47,16 @@ const InfoPage = () => {
                     <div className=" backdrop-blur-md h-auto w-full md:px-20 lg:px-80 text-white">
                         <div className="grid grid-cols-4 px-60 md:px-20 sm:px-0 pt-10">
                             <div className="mx-auto">
-                                <img className="mb-2" src="https://img.yts.mx/assets/images/movies/my_best_friend_is_a_vampire_1987/medium-cover.jpg" alt="" srcset="" />
+                                <img className="mb-2" src={data.large_cover_image} alt="" srcset="" />
                                 <div>
                                     <button type="button" className="w-full bg-green-600 py-2 font-semibold text-xl text-white mb-1 rounded-sm">Download</button>
                                     <button type="button" className="w-full bg-teal-600 py-2 font-semibold text-xl text-white mb-1 rounded-sm">Watch Now</button>
                                 </div>
                             </div>
                             <div className="grid col-span-2 text-left md:pl-10">
-                                <h1 className=" text-4xl font-bold"> My Best Friend Is a Vampire</h1>
-                                <h1 className=" font-bold text-xl">1987</h1>
-                                <h1 className="font-bold text-lg">Comedy/Horro</h1>
+                                <h1 className=" text-4xl font-bold"> {data.title}</h1>
+                                <h1 className=" font-bold text-xl">{data.year}</h1>
+                                <h1 className="font-bold text-lg">{data.genres}</h1>
                                 <span className=" font-semibold italic">
                                     Available in:
                                 </span>
@@ -27,7 +64,7 @@ const InfoPage = () => {
                                 <table>
                                     <tr>
                                         <td><FiHeart /></td>
-                                        <td>10</td>
+                                        <td>{data.like_count}</td>
                                     </tr>
                                     <tr>
                                         <td><FiCoffee /></td>
@@ -37,28 +74,22 @@ const InfoPage = () => {
                                         <td>
                                             <FiFilm />
                                         </td>
-                                        <td>6.0/10 </td>
+                                        <td>{data.rating}/10 </td>
                                     </tr>
                                 </table>
                             </div>
                             <div>
                                 <h1 className=" font-semibold text-left mb-2">Similar movies</h1>
                                 <div className="grid grid-cols-2">
-                                    <div className="">
-                                        <a href="http://">
-                                            <img className="mb-2 w-20" src="https://img.yts.mx/assets/images/movies/my_best_friend_is_a_vampire_1987/medium-cover.jpg" alt="" srcset="" />
-                                        </a>
-                                    </div>
-                                    <div className="">
-                                        <a href="http://">
-                                            <img className="mb-2 w-20" src="https://img.yts.mx/assets/images/movies/my_best_friend_is_a_vampire_1987/medium-cover.jpg" alt="" srcset="" />
-                                        </a>
-                                    </div>
-                                    <div className="">
-                                        <a href="http://">
-                                            <img className="mb-2 w-20" src="https://img.yts.mx/assets/images/movies/my_best_friend_is_a_vampire_1987/medium-cover.jpg" alt="" srcset="" />
-                                        </a>
-                                    </div>
+                                    {movieSuggestions.map((data) => (
+                                        <div className="">
+                                            <Link to={`/infopage/${data.id}`}>
+                                                <img className="mb-2 w-20" src={data.medium_cover_image} alt="" srcset="" />
+                                            </Link>
+                                        </div>
+                                    ))}
+
+
                                 </div>
                             </div>
                             <div>
@@ -71,10 +102,10 @@ const InfoPage = () => {
 
                 </div>
                 <div className="">
-                    <div className="grid grid-cols-3 md:px-20 lg:px-80 py-4 space-x-0 ">
-                        <img src="https://img.yts.mx/assets/images/movies/my_best_friend_is_a_vampire_1987/medium-screenshot2.jpg" alt="" srcset="" />
-                        <img src="https://img.yts.mx/assets/images/movies/my_best_friend_is_a_vampire_1987/medium-screenshot2.jpg" alt="" srcset="" />
-                        <img src="https://img.yts.mx/assets/images/movies/my_best_friend_is_a_vampire_1987/medium-screenshot2.jpg" alt="" srcset="" />
+                    <div className="grid grid-cols-3 md:px-20 lg:px-80 py-4 space-x-0 gap-2">
+                        <img src={data.large_screenshot_image1} alt="" srcset="" />
+                        <img src={data.large_screenshot_image2} alt="" srcset="" />
+                        <img src={data.large_screenshot_image3} alt="" srcset="" />
                     </div>
 
                 </div>
@@ -84,10 +115,10 @@ const InfoPage = () => {
 
                             <h1 className=" font-bold text-xl pb-20">Plot Summary</h1>
                             <div className=" text-gray-200">
-                                <p className="pb-20">After an encounter with a beautiful client, a teenage delivery boy finds himself being turned into a vampire.</p>
+                                <p className="pb-20">{data.description_full}</p>
                                 <span >
                                     <h1>Uploaded by: FREEMAN</h1>
-                                    <h1>July 27, 2023 at 01:25 PM</h1>
+                                    <h1>{data.date_uploaded}</h1>
                                 </span>
                             </div>
 
@@ -167,7 +198,7 @@ const InfoPage = () => {
                                             5.5/10, rounded up to 6 for IMDb.
                                         </ReactReadMoreReadLess>
                                     </p>
-                                    <hr  className="border-gray-400 my-4"/>
+                                    <hr className="border-gray-400 my-4" />
                                 </div>
                                 <div>
                                     <h1 className="flex items-center"><span className="text-gray-400 pr-4">Reviewed by</span> BA_Harrison  <FiStar className="text-green-500 " /><span>6 / 10</span></h1>
@@ -190,10 +221,10 @@ const InfoPage = () => {
                                             5.5/10, rounded up to 6 for IMDb.
                                         </ReactReadMoreReadLess>
                                     </p>
-                                    <hr  className="border-gray-400 my-4"/>
+                                    <hr className="border-gray-400 my-4" />
                                 </div>
 
-                               
+
                             </div>
                         </div>
                     </div>
