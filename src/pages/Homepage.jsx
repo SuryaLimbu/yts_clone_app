@@ -32,7 +32,7 @@ const Homepage = () => {
                 console.error('Error fetching api: ', error);
             });
     }, [])
-    const topMovies = popularMovies.length > 0 ? popularMovies.slice(0, 4) : [];
+    const topMovies = popularMovies.length > 0 ? popularMovies.slice(0, 5) : [];
     // console.log(topMovies);
 
     // leatest moviews
@@ -120,7 +120,7 @@ const Homepage = () => {
                             <a href="http://" className=" text-blue-600">IMPORTANT - YTS.MX is the only new official domain for YIFY Movies</a>
 
                         </div>
-                        <div>
+                        <div className=" tablet:px-10 tabletSc:px-20 laptop:px-60 desktop:px-80">
                             <div className="flex justify-between">
                                 <div className="flex text-center items-center text-xl font-bold">
                                     <FiStar className=" text-green-600 fill-green-600" />
@@ -136,7 +136,7 @@ const Homepage = () => {
                                 </div>
                             </div>
                             <hr />
-                            <div className="grid grid-cols-4 mt-2 gap-2">
+                            <div class="tablet:grid-cols-2 tabletSc:grid-cols-3 laptop:grid-cols-4 desktop:grid-cols-5 grid grid-cols-1 gap-4 px-10 py-10">
                                 <Items popularMovies={topMovies} />
 
                             </div>
@@ -162,7 +162,7 @@ const Homepage = () => {
                         <h1 className=" font-bold text-lg">Latest YIFY Movies Torrents</h1>
                         <h1 className=" text-gray-400 font-bold hover:text-black"> <a href="http://">Browse All <FiChevronsRight className="flex inline-flex items-center" /></a></h1>
                     </div>
-                    <div className="grid grid-cols-4 pt-10">
+                    <div class="tablet:grid-cols-2 tabletSc:grid-cols-3 laptop:grid-cols-4 desktop:grid-cols-5 grid grid-cols-1 gap-4  px-10 py-10">
                         <Items popularMovies={leatestMoviews} />
                     </div>
                 </div >

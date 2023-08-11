@@ -6,6 +6,7 @@ import Homepage from './pages/Homepage';
 import InfoPage from './pages/InfoPage';
 import Navbar from './components/Navbar';
 import Movies from './pages/Movies';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path='/movies' element={<Movies />} />
 
         </Routes>
+        <Footer/>
       </BrowserRouter>
 
     </div>

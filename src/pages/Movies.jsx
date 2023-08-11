@@ -39,7 +39,7 @@ const Movies = () => {
 
     }
     // console.log(searchVal);
-    
+
     useEffect(() => {
         axios.get(`https://yts.mx/api/v2/list_movies.json?query_term=${searchVal}`)
             .then(response => {
@@ -47,7 +47,7 @@ const Movies = () => {
                 // console.log(response.data.data.movies);
             })
     })
-    
+
 
 
 
@@ -77,19 +77,23 @@ const Movies = () => {
                     <h1 className="font-bold text-xl text-green-500">YIFY Movies (ordered by latest)
                     </h1>
                 </div>
-                <div>
-                    {/* Display the pagination component */}
-                    <Pagination
-                        currentPage={currentPage}
-                        totalPages={Math.ceil(data.length / itemsPerPage)}
-                        onPageChange={handlePageChange}
-                    />
 
-                </div>
+                <div className="tablet:px-10 tabletSc:px-20 laptop:px-60 desktop:px-80">
 
-                <div className="grid grid-cols-5 pt-4 w-full md:px-20 lg:px-80 text-white text-center">
-                    <Items popularMovies={searchData} />
 
+                    <div class="tablet:grid-cols-2 tabletSc:grid-cols-3 laptop:grid-cols-4 desktop:grid-cols-5 grid grid-cols-1 gap-4  text-white px-10 py-10">
+                        <Items popularMovies={searchData} />
+
+                    </div>
+                    <div>
+                        {/* Display the pagination component */}
+                        <Pagination
+                            currentPage={currentPage}
+                            totalPages={Math.ceil(data.length / itemsPerPage)}
+                            onPageChange={handlePageChange}
+                        />
+
+                    </div>
                 </div>
             </div>
         </>
