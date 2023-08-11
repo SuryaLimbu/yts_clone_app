@@ -112,7 +112,7 @@ const Homepage = () => {
 
             <div className="">
                 <div className="bg-[url('https://img.yts.mx/assets/images/movies/to_end_all_war_oppenheimer_the_atomic_bomb_2023/background.jpg')] h-auto bg-cover  pb-20">
-                    <div className=" backdrop-blur-md h-auto w-full md:px-20 lg:px-80 text-white">
+                    <div className=" backdrop-blur-md h-auto w-full  text-white">
 
                         <div className="flex flex-col items-center text-center space-y-6">
                             <h1 className=" font-bold text-5xl mt-10">Download YTS YIFY movies: HD smallest size</h1>
@@ -120,8 +120,8 @@ const Homepage = () => {
                             <a href="http://" className=" text-blue-600">IMPORTANT - YTS.MX is the only new official domain for YIFY Movies</a>
 
                         </div>
-                        <div className=" tablet:px-10 tabletSc:px-20 laptop:px-60 desktop:px-80">
-                            <div className="flex justify-between">
+                        <div className=" tablet:px-20 tabletSc:px-40 laptop:px-60 desktop:px-80">
+                            <div className="flex justify-between pb-2">
                                 <div className="flex text-center items-center text-xl font-bold">
                                     <FiStar className=" text-green-600 fill-green-600" />
                                     <h1 className=" ml-2">
@@ -135,14 +135,14 @@ const Homepage = () => {
                                     </h1>
                                 </div>
                             </div>
-                            <hr />
+                            <hr  className=" opacity-20 "/>
                             <div class="tablet:grid-cols-2 tabletSc:grid-cols-3 laptop:grid-cols-4 desktop:grid-cols-5 grid grid-cols-1 gap-4 px-10 py-10">
                                 <Items popularMovies={topMovies} />
 
                             </div>
 
                             {/* warning section */}
-                            <div className="mt-10 border rounded-md border-green-500 p-10">
+                            <div className="mt-10 border rounded-md border-green-500 p-10 text-center">
                                 <h1 className=" font-bold text-4xl pb-5">Warning!‌‌‌ Download only with VPN...</h1>
                                 <span>Downloading torrents is risky for you: your IP and leaked private data being actively tracked by your ISP and Government Agencies Protect yourself from expensive lawsuits and fines NOW! You must use a VPN like Guard. It is the only way to download torrents fully anonymous by encrypting all traffic with zero logs.</span>
                                 <span>
@@ -157,7 +157,7 @@ const Homepage = () => {
                     </div >
                 </div >
                 {/* Leatest Movies */}
-                < div className="mt-10 bg-dark px-80" >
+                < div className="mt-10 bg-dark  tablet:px-20 tabletSc:px-40 laptop:px-60 desktop:px-80" >
                     <div className="flex justify-between">
                         <h1 className=" font-bold text-lg">Latest YIFY Movies Torrents</h1>
                         <h1 className=" text-gray-400 font-bold hover:text-black"> <a href="http://">Browse All <FiChevronsRight className="flex inline-flex items-center" /></a></h1>

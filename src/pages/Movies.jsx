@@ -55,7 +55,7 @@ const Movies = () => {
 
     return (
         <>
-            <div className="bg-black/90 h-auto py-10">
+            <div className="bg-black/80 h-auto py-10">
                 <div className="w-full md:px-20 lg:px-80 text-white ">
                     <div className=" text-center">
                         <form onSubmit={onSubmit} style={{ marginTop: '25px' }}>
@@ -72,7 +72,7 @@ const Movies = () => {
 
                 </div>
             </div>
-            <div className=" bg-black/80 pb-20">
+            <div className=" bg-black/90 pb-20">
                 <div className="w-full md:px-20 lg:px-80 text-white text-center py-10 ">
                     <h1 className="font-bold text-xl text-green-500">YIFY Movies (ordered by latest)
                     </h1>

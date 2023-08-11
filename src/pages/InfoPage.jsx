@@ -42,18 +42,18 @@ const InfoPage = () => {
 
     return (
         <>
-            <div className="bg-black/90 text-white">
+            <div className="bg-black/90 text-white ">
                 <div className="bg-[url('https://img.yts.mx/assets/images/movies/to_end_all_war_oppenheimer_the_atomic_bomb_2023/background.jpg')] h-auto bg-cover  pb-20 ">
-                    <div className=" backdrop-blur-md h-auto w-full md:px-20 lg:px-80 text-white">
-                        <div className="grid grid-cols-4 px-60 md:px-20 sm:px-0 pt-10">
+                    <div className=" sm:px-2 backdrop-blur-md h-auto w-full md:px-20 lg:px-80 text-white">
+                        <div className="grid sm:grid-cols-2 gap-4 laptop:grid-cols-4 tabletSc:grid-cols-4 desktop:grid-cols-4 desktop:px-60  laptop:px-20 tabletSc:px-10 pt-10 ">
                             <div className="mx-auto">
                                 <img className="mb-2 rounded-lg" src={data.large_cover_image} alt="" srcset="" />
                                 <div>
-                                    <button type="button" className="w-full bg-green-600 py-2 font-semibold text-xl text-white mb-1 rounded-sm">Download</button>
-                                    <button type="button" className="w-full bg-teal-600 py-2 font-semibold text-xl text-white mb-1 rounded-sm">Watch Now</button>
+                                    <button type="button" className="w-full bg-green-600 py-2 font-semibold text-xl text-white mb-1 rounded-lg">Download</button>
+                                    <button type="button" className="w-full bg-teal-600 py-2 font-semibold text-xl text-white mb-1 rounded-lg">Watch Now</button>
                                 </div>
                             </div>
-                            <div className="grid col-span-2 text-left laptop:pl-10">
+                            <div className="grid sm:col-span-1 laptop:col-span-2 desktop:col-span-2 tablet:col-span-2 tabletSc:col-span-2 text-left laptop:pl-10 tablet:pl-8 tabletSc:pl-10 desktop:pl-15">
                                 <h1 className=" text-4xl font-bold"> {data.title}</h1>
                                 <h1 className=" font-bold text-xl">{data.year}</h1>
                                 <h1 className="font-bold text-lg">{data.genres}</h1>
@@ -78,7 +78,7 @@ const InfoPage = () => {
                                     </tr>
                                 </table>
                             </div>
-                            <div>
+                            <div className="tablet:block tabletSc:block laptop:block desktop:block hidden">
                                 <h1 className=" font-semibold text-left mb-2">Similar movies</h1>
                                 <div className="grid grid-cols-2">
                                     {movieSuggestions.map((data) => (
@@ -102,20 +102,20 @@ const InfoPage = () => {
 
                 </div>
 
-                <div className=" laptop:px-60">
-                    <div className="grid grid-cols-3 md:px-20 lg:px-80 py-4 space-x-0 gap-2">
-                        <img src={data.large_screenshot_image1} alt="" srcset="" />
-                        <img src={data.large_screenshot_image2} alt="" srcset="" />
-                        <img src={data.large_screenshot_image3} alt="" srcset="" />
+                <div className=" laptop:px-40 desktop:px-60">
+                    <div className="grid desktop:grid-cols-3 tabletSc:grid-cols-3 laptop:grid-cols-3 sm:grid-cols-1 sm:px-2  md:px-20 lg:px-80 py-4 space-x-0 gap-2">
+                        <img className="rounded-lg" src={data.large_screenshot_image1} alt="" srcset="" />
+                        <img className="rounded-lg" src={data.large_screenshot_image2} alt="" srcset="" />
+                        <img className="rounded-lg" src={data.large_screenshot_image3} alt="" srcset="" />
                     </div>
 
                 </div>
-                <div className=" laptop:px-60 " >
-                    <div className="grid grid-cols-3  py-6 space-x-0 ">
-                        <div className="text-left col-span-2 ">
+                <div className=" desktop:px-60  laptop:px-20 tabletSc:px-10 sm:px-2" >
+                    <div className="grid desktop:grid-cols-3 tabletSc:grid-cols-3 laptop:grid-cols-3  sm:grid-cols-1 sm:gap-4 py-6 space-x-0 ">
+                        <div className="text-left col-span-2 bg-black/10 rounded-lg text-center py-5">
 
-                            <h1 className=" font-bold text-xl pb-20">Plot Summary</h1>
-                            <div className=" text-gray-200">
+                            <h1 className=" font-bold text-xl pb-10">Plot Summary</h1>
+                            <div className=" text-gray-200 px-4">
                                 <p className="pb-20">{data.description_full}</p>
                                 <span >
                                     <h1>Uploaded by: FREEMAN</h1>
@@ -124,7 +124,7 @@ const InfoPage = () => {
                             </div>
 
                         </div>
-                        <div className="text-left">
+                        <div className="text-left px-2">
                             <h1 className=" text-xl font-bold">Director</h1>
                             <div className="flex pb-5">
                                 <a href="http://" className="flex items-center">
@@ -150,10 +150,10 @@ const InfoPage = () => {
 
 
                     <div>
-                        <div className="grid grid-cols-2 md:px-20 lg:px-80 py-10 space-x-0 gap-6 ">
+                        <div className="grid desktop:grid-cols-2  laptop:grid-cols-2 sm:grid-cols-1 py-10 space-x-0 gap-6 ">
                             <div>
                                 <h1 className="flex items-center pb-10 font-bold text-xl"> <FiMessageSquare /> <span className="pl-4">Comments</span></h1>
-                                <div className="bg-black grid grid-cols-6 p-4 rounded">
+                                <div className="bg-black/10 grid grid-cols-6 p-4 rounded-lg">
                                     <div className="">
                                         <img className="h-14 w-14 rounded-full" src="https://img.yts.mx/assets/images/movies/my_best_friend_is_a_vampire_1987/medium-screenshot2.jpg" alt="" srcset="" />
                                     </div>
@@ -199,7 +199,7 @@ const InfoPage = () => {
                                                 5.5/10, rounded up to 6 for IMDb.
                                             </ReactReadMoreReadLess>
                                         </p>
-                                        <hr className="border-gray-400 my-4" />
+                                        <hr className=" opacity-20 my-4" />
                                     </div>
                                     <div>
                                         <h1 className="flex items-center"><span className="text-gray-400 pr-4">Reviewed by</span> BA_Harrison  <FiStar className="text-green-500 " /><span>6 / 10</span></h1>
@@ -222,7 +222,7 @@ const InfoPage = () => {
                                                 5.5/10, rounded up to 6 for IMDb.
                                             </ReactReadMoreReadLess>
                                         </p>
-                                        <hr className="border-gray-400 my-4" />
+                                        
                                     </div>
 
                                 </div>

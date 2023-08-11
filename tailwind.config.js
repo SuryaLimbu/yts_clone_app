@@ -8,11 +8,12 @@ module.exports = {
 
     },
     screens: {
+      sm: '100px',
 
       tablet: '480px',
       // => @media (min-width: 640px) { ... }
 
-      tabletSc:'768px',
+      tabletSc: '768px',
 
       laptop: '1024px',
       // => @media (min-width: 1024px) { ... }
